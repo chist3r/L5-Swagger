@@ -40,13 +40,13 @@ Route::group(['namespace' => 'L5Swagger'], function (Router $router) {
             }
 
             if (isset($config['routes']['docs'])) {
-                $router->get($config['routes']['docs'].'/{jsonFile?}', [
+                $router->get($config['routes']['docs'].'/{'.$name.'jsonFile?}', [
                     'as' => 'l5-swagger.'.$name.'.docs',
                     'middleware' => $config['routes']['middleware']['docs'] ?? [],
                     'uses' => '\L5Swagger\Http\Controllers\SwaggerController@docs',
                 ]);
 
-                $router->get($config['routes']['docs'].'/asset/{asset}', [
+                $router->get($config['routes']['docs'].'/asset/{'.$name.'asset}', [
                     'as' => 'l5-swagger.'.$name.'.asset',
                     'middleware' => $config['routes']['middleware']['asset'] ?? [],
                     'uses' => '\L5Swagger\Http\Controllers\SwaggerAssetController@index',
